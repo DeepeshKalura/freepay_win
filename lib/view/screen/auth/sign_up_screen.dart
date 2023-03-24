@@ -1,8 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
-import '../../controller/firebase_controller.dart';
-import '../../controller/rotues.dart';
+import '../../../controller/firebase_controller.dart';
+import '../../../controller/rotues.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -108,12 +108,7 @@ class _SignUpState extends State<SignUp> {
                                 _passwordController.text,
                               );
                               // Implement the scaffold messager
-                              if (result == "Successful") {
-                                Navigator.pushNamed(
-                                  context,
-                                  MyRoutes.uploadScreen,
-                                );
-                              } else {
+                              if (result != "Successful") {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(result),

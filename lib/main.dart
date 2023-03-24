@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:freepay/view/screen/homedashboard.dart';
 
-import 'controller/rotues.dart';
+import 'controller/firebase_controller.dart';
 import 'firebase_options.dart';
-import 'view/screen/forget_password_screen.dart';
-import 'view/screen/login_screen.dart';
-import 'view/screen/sign_up_screen.dart';
-import 'view/screen/upload_screen.dart';
+import 'view/screen/auth/login_screen.dart';
+import 'view/screen/work/create/create_project_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,29 +21,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData.dark(),
-        initialRoute: '/',
-        routes: {
-          MyRoutes.uploadScreen: (context) => const UploadScreen(),
-          MyRoutes.loginScreen: (context) => const LoginScreen(),
-          MyRoutes.signUp: (context) => const SignUp(),
-          MyRoutes.forgotPassword: (context) => const ForgotPassword(),
-          MyRoutes.checker: (context) => const Checker(),
-        });
+      title: 'Flutter Demo',
+      theme: ThemeData.dark(),
+      home: const HomeDashBoardScreen(),
+      debugShowCheckedModeBanner: false,
+      //initialRoute: '/',
+      // routes: {
+      //   MyRoutes.uploadScreen: (context) => const UploadScreen(),
+      //   MyRoutes.loginScreen: (context) => const LoginScreen(),
+      //   MyRoutes.signUp: (context) => const SignUp(),
+      //   MyRoutes.forgotPassword: (context) => const ForgotPassword(),
+      //   MyRoutes.checker: (context) => Checker(),
+
+      // });
+    );
   }
 }
 
 class Checker extends StatelessWidget {
-  const Checker({super.key});
+  Checker({super.key});
+  final FirbaseController _firbaseController = FirbaseController();
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseAuth.instance.authStateChanges(),
+      stream: _firbaseController.auth.authStateChanges(),
       builder: (context, snapShot) {
         if (snapShot.hasData) {
-          return const UploadScreen();
+          return const CreateProjectPageScreen();
         } else {
           return const LoginScreen();
         }

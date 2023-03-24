@@ -1,8 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
-import '../../controller/firebase_controller.dart';
-import '../../controller/rotues.dart';
+import '../../../controller/firebase_controller.dart';
+import '../../../controller/rotues.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
