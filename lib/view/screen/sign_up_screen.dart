@@ -133,8 +133,9 @@ class _SignUpState extends State<SignUp> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Already have an account?',
-                              style: Theme.of(context).textTheme.displaySmall),
+                          const Text(
+                            'Already have an account?',
+                          ),
                           TextButton(
                             onPressed: (() {
                               Navigator.pushNamed(
