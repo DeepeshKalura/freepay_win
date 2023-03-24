@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "914380146036",
+    "project_id": "freepay-394fb",
+    "storage_bucket": "freepay-394fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914380146036:android:41fca05f718ab73055d821",
+        "android_client_info": {
+          "package_name": "com.deepeshkalura.freepay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "914380146036-5rmnu8ooo501oaj1e69ramed0pal5hqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjpAtq_kiacR-WnqNPS59TDoXZcKlh3Rw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "914380146036-5rmnu8ooo501oaj1e69ramed0pal5hqo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
