@@ -4,6 +4,7 @@ import '../work/request/request_service.dart';
 import 'board/dash_board.dart';
 import 'board/feed_board.dart';
 import 'board/profile_board.dart';
+import 'board/search_board.dart';
 
 class HomeDashBoardNaviagtorScreen extends StatefulWidget {
   const HomeDashBoardNaviagtorScreen({super.key});
@@ -18,7 +19,7 @@ class _HomeDashBoardNaviagtorScreenState
   int _selectedIndex = 2;
   static final List<Widget> _widgetOptions = <Widget>[
     const RequestServicePageWidget(),
-    SearchWidget(),
+    const SearchWidget(),
     const Dashboard(),
     FeedsBoard(),
     const ProfileBoard(),
@@ -64,41 +65,6 @@ class _HomeDashBoardNaviagtorScreenState
             label: 'Profile',
           ),
         ],
-      ),
-    );
-  }
-}
-
-class SearchWidget extends StatelessWidget {
-  final TextEditingController _textController = TextEditingController();
-
-  SearchWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: TextField(
-        controller: _textController,
-        decoration: InputDecoration(
-          hintText: 'Search',
-          border: InputBorder.none,
-          prefixIcon: IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
-          ),
-        ),
       ),
     );
   }
