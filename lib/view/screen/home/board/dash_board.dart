@@ -43,39 +43,36 @@ class _DashboardState extends State<Dashboard> {
 
   final List<EarningHistory> data = [
     EarningHistory(
+      day: "Sun",
+      earning: 10000,
+      barColor: charts.ColorUtil.fromDartColor(
+        Colors.purpleAccent.withOpacity(
+          0.6,
+        ),
+      ),
+    ),
+    EarningHistory(
       day: "Mon",
-      earning: 1000000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.blue),
+      earning: 11000,
+      barColor: charts.ColorUtil.fromDartColor(
+        Colors.orange.withOpacity(
+          0.6,
+        ),
+      ),
     ),
     EarningHistory(
       day: "Tue",
-      earning: 1100000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.blue),
+      earning: 12000,
+      barColor: charts.ColorUtil.fromDartColor(
+        Colors.purpleAccent.withOpacity(
+          0.6,
+        ),
+      ),
     ),
     EarningHistory(
-      day: "Wed",
-      earning: 1200000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.blue),
-    ),
-    EarningHistory(
-      day: "Thur",
-      earning: 1000000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.blue),
-    ),
-    EarningHistory(
-      day: "Fri",
-      earning: 850000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.blue),
-    ),
-    EarningHistory(
-      day: "Sat",
-      earning: 770000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.blue),
-    ),
-    EarningHistory(
-      day: "Sun",
-      earning: 760000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.red),
+      day: "Web",
+      earning: 10000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.deepPurple),
     ),
   ];
 
@@ -92,51 +89,104 @@ class _DashboardState extends State<Dashboard> {
           colorFn: (EarningHistory series, _) => series.barColor)
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Dashboard"),
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-            child: charts.BarChart(series, animate: true),
-          ),
-          const SizedBox(height: 16.0),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 8.0),
-                  const Text(
-                    "Active Projects",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  Text(
-                    "$activeProjects",
-                    style: const TextStyle(fontSize: 24.0),
-                  ),
-                ],
+          const Padding(
+            padding: EdgeInsets.only(
+              top: 46.0,
+              left: 16.0,
+              bottom: 10,
+            ),
+            child: Text(
+              "FEED",
+              style: TextStyle(
+                fontSize: 44,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          const SizedBox(height: 16.0),
+          const Padding(
+            padding: EdgeInsets.only(
+              top: 4.0,
+              left: 16.0,
+              bottom: 10,
+            ),
+            child: Text(
+              "Resume",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.29,
+                width: MediaQuery.of(context).size.width * 0.65,
+                child: charts.BarChart(
+                  series,
+                  animate: true,
+                ),
+              ),
+              Column(
+                children: [
+                  const Text(
+                    "Total Gains",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Text(
+                    "43 K",
+                    style: TextStyle(
+                      fontSize: 39,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "Active Projects $activeProjects",
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+          const Padding(
+            padding: EdgeInsets.only(
+              top: 14.0,
+              left: 16.0,
+            ),
+            child: Text(
+              "Transcitions",
+              style: TextStyle(
+                fontSize: 31,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           Expanded(
-            child: ListView.builder(
-              itemCount: transcitions.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return TransitionCard(
-                  name: transcitions[index].name,
-                  date: transcitions[index].date,
-                  amount: double.parse(transcitions[index].amount),
-                  imageUrl: transcitions[index].imageUrl,
-                );
-              },
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxHeight: 2000, maxWidth: 260),
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: transcitions.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return TransitionCard(
+                    name: transcitions[index].name,
+                    date: transcitions[index].date,
+                    amount: double.parse(transcitions[index].amount),
+                    imageUrl: transcitions[index].imageUrl,
+                  );
+                },
+              ),
             ),
           ),
         ],
