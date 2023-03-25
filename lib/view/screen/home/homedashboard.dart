@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../work/request/request_service.dart';
-import 'widget/dash_board.dart';
+import 'board/dash_board.dart';
 
 class HomeDashBoardNaviagtorScreen extends StatefulWidget {
   const HomeDashBoardNaviagtorScreen({super.key});
@@ -17,7 +17,7 @@ class _HomeDashBoardNaviagtorScreenState
   static final List<Widget> _widgetOptions = <Widget>[
     const RequestServicePageWidget(),
     SearchWidget(),
-    Dashboard(),
+    const Dashboard(),
     const JobContainer(
       jobContact: 'Pankaj',
       jobTitle: 'Flutter Developer',
