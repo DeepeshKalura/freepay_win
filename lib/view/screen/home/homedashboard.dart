@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../work/request/request_service.dart';
+import 'widget/dash_board.dart';
 
 class HomeDashBoardNaviagtorScreen extends StatefulWidget {
   const HomeDashBoardNaviagtorScreen({super.key});
@@ -16,8 +17,7 @@ class _HomeDashBoardNaviagtorScreenState
   static final List<Widget> _widgetOptions = <Widget>[
     const RequestServicePageWidget(),
     SearchWidget(),
-    MoneyBarGraph(
-        activeProjects: const ['Pankaj'], moneyEarned: const [120, 200, 300]),
+    Dashboard(),
     const JobContainer(
       jobContact: 'Pankaj',
       jobTitle: 'Flutter Developer',
@@ -70,85 +70,6 @@ class _HomeDashBoardNaviagtorScreenState
           ),
         ],
       ),
-    );
-  }
-}
-
-class MoneyBarGraph extends StatelessWidget {
-  final List<double> moneyEarned;
-  final List<String> activeProjects;
-  final double maxMoney;
-
-  MoneyBarGraph(
-      {super.key, required this.moneyEarned, required this.activeProjects})
-      : maxMoney = moneyEarned
-            .reduce((value, element) => value > element ? value : element);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const SizedBox(height: 16),
-        const Text(
-          'Dash Board',
-          style: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 16),
-        SizedBox(
-          height: 250,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: List.generate(
-              activeProjects.length,
-              (index) {
-                final percentage = (moneyEarned[index] / maxMoney) * 100;
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      height: 200 * (moneyEarned[index] / maxMoney),
-                      width: 20,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: Colors.blue,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      '\$${moneyEarned[index].toStringAsFixed(2)}',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      activeProjects[index],
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '${percentage.toStringAsFixed(2)}%',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
