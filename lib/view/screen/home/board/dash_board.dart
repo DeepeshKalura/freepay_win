@@ -92,17 +92,18 @@ class _DashboardState extends State<Dashboard> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(
+          Padding(
+            padding: const EdgeInsets.only(
               top: 46.0,
               left: 16.0,
               bottom: 10,
             ),
             child: Text(
-              "FEED",
+              "Feed",
               style: TextStyle(
                 fontSize: 44,
                 fontWeight: FontWeight.bold,
+                color: Colors.purpleAccent.shade700,
               ),
             ),
           ),

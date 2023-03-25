@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../common/theme_common.dart';
 import '../../../../common/widget_common.dart';
+import '../../../../controller/firebase_controller.dart';
 
 class RequestServicePageWidget extends StatefulWidget {
   const RequestServicePageWidget({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class RequestServicePageWidget extends StatefulWidget {
 
 class RequestServicePageWidgetState extends State<RequestServicePageWidget> {
   TextEditingController? textController;
+  final FirbaseController _firebaseController = FirbaseController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -30,7 +32,7 @@ class RequestServicePageWidgetState extends State<RequestServicePageWidget> {
         automaticallyImplyLeading: false,
         leading: InkWell(
           onTap: () async {
-            Navigator.pop(context);
+            _firebaseController.signOut();
           },
           child: const Icon(
             Icons.keyboard_arrow_left_outlined,

@@ -85,7 +85,7 @@ class ProfileBoard extends StatelessWidget {
                       bottom: 10,
                     ),
                     child: Text(
-                      'About Me',
+                      'Description',
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -126,7 +126,6 @@ class ProfileBoard extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
-                          color: Colors.purpleAccent,
                         ),
                       ),
                       SizedBox(
