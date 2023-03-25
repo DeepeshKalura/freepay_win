@@ -99,9 +99,9 @@ class ProfileBoard extends StatelessWidget {
                       bottom: 10,
                     ),
                     child: Text(
-                      'I am a passionate developer who loves to build amazing mobile and web applications using Flutter and other technologies. I have over 5 years of experience in software development and have worked on various projects for clients around the world. In my free time, I like to read books and learn new technologies.',
+                      'I am a passionate developer who loves to build amazing mobile and web applications using Flutter and other technologies. In my free time, I like to read books and learn new technologies.',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 14,
                         color: Colors.black54,
                       ),
                     ),
@@ -126,6 +126,7 @@ class ProfileBoard extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
+                          color: Colors.purpleAccent,
                         ),
                       ),
                       SizedBox(
@@ -171,6 +172,9 @@ class ProfileBoard extends StatelessWidget {
                         'assets/svg/stars.svg',
                         // width: 30,
                         // height: 30,
+                        theme: const SvgTheme(
+                          currentColor: Colors.amber,
+                        ),
                       ),
                     ],
                   ),
@@ -182,15 +186,49 @@ class ProfileBoard extends StatelessWidget {
                 bottom: 10,
                 left: 20,
                 right: 10,
-                top: 5,
+                top: 15,
               ),
               child: Text(
-                'Potfilo',
+                'SampleWork',
                 style: TextStyle(
-                  fontSize: 26,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
+            Row(
+              children: [
+                Image.asset(
+                  'assets/images/girl.png',
+                  width: MediaQuery.of(context).size.width / 2 - 7.5,
+                  height: 250,
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(width: 15),
+                Image.asset(
+                  'assets/images/lizard.png',
+                  width: MediaQuery.of(context).size.width / 2 - 7.5,
+                  height: 250,
+                  fit: BoxFit.cover,
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Image.asset(
+                  'assets/images/cat.png',
+                  width: MediaQuery.of(context).size.width / 2 - 7.5,
+                  height: 250,
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(width: 15),
+                Image.asset(
+                  'assets/images/elephant.png',
+                  width: MediaQuery.of(context).size.width / 2 - 7.5,
+                  height: 250,
+                  fit: BoxFit.cover,
+                ),
+              ],
             ),
           ],
         ),

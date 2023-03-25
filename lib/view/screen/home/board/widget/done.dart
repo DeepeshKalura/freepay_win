@@ -48,7 +48,7 @@ Widget done(double height, String image, String title, String name,
                   height: 4,
                 ),
                 Text(
-                  '\$ $amount',
+                  amount,
                   style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
