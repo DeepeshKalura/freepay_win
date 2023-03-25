@@ -3,7 +3,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 
 import '../../../controller/firebase_controller.dart';
 import '../../../controller/rotues.dart';
-import '../../widget/rounded_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -35,11 +34,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   margin: const EdgeInsets.all(10),
                 ),
+                Image.asset("assets/logo/auth_logo.png"),
                 AnimatedTextKit(
                   animatedTexts: [
                     TypewriterAnimatedText(
-                      'Kreedy Parther App',
-                      textStyle: Theme.of(context).textTheme.titleLarge,
+                      'FreePay!',
+                      textStyle: const TextStyle(
+                        color: Colors.purple,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
                       speed: const Duration(
                         milliseconds: 450,
                       ),
@@ -87,8 +91,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.1,
                             ),
-                            RoundedButtonWidget(
-                              onpressed: () async {
+                            ElevatedButton(
+                              onPressed: () async {
                                 var result = await _firbaseController
                                     .signUpWithEmailAndPassword(
                                   _emailController.text,
@@ -102,11 +106,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                   );
                                 }
                               },
-                              buttonText: 'Login',
-                              width: MediaQuery.of(context).size.width * 0.74,
+                              style: ButtonStyle(
+                                fixedSize: MaterialStateProperty.all(
+                                  Size(MediaQuery.of(context).size.width * 0.74,
+                                      40),
+                                ),
+                              ),
+                              child: const Text('Login'),
                             ),
                           ],
                         ),
+                      ),
+                      const SizedBox(
+                        height: 2,
                       ),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -118,11 +130,17 @@ class _LoginScreenState extends State<LoginScreen> {
                             InkWell(
                               onTap: () {
                                 Navigator.pushNamed(
-                                    context, MyRoutes.forgotPassword);
+                                  context,
+                                  MyRoutes.forgotPassword,
+                                );
                               },
-                              child: Text(
+                              child: const Text(
                                 'Forgot Password?',
-                                style: Theme.of(context).textTheme.bodySmall,
+                                style: TextStyle(
+                                  color: Colors.purple,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ],

@@ -2,7 +2,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 import '../../../controller/firebase_controller.dart';
-import '../../../controller/rotues.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -31,16 +30,22 @@ class _SignUpState extends State<SignUp> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 margin: const EdgeInsets.all(20),
               ),
+              Image.asset("assets/logo/auth_logo.png"),
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
-                    'Create Your Account!',
-                    textStyle: Theme.of(context).textTheme.titleLarge,
+                    'Create Account!',
+                    textStyle: const TextStyle(
+                      color: Colors.purple,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                    ),
                     speed: const Duration(
                       milliseconds: 450,
                     ),
@@ -116,6 +121,12 @@ class _SignUpState extends State<SignUp> {
                                 );
                               }
                             }),
+                            style: ButtonStyle(
+                              fixedSize: MaterialStateProperty.all(
+                                Size(MediaQuery.of(context).size.width * 0.74,
+                                    40),
+                              ),
+                            ),
                             child: const Text(
                               'Sign Up',
                             ),
@@ -133,10 +144,7 @@ class _SignUpState extends State<SignUp> {
                           ),
                           TextButton(
                             onPressed: (() {
-                              Navigator.pushNamed(
-                                context,
-                                MyRoutes.loginScreen,
-                              );
+                              Navigator.pop(context);
                             }),
                             child: const Text(
                               'Sign In',

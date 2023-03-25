@@ -24,12 +24,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          iconTheme: const IconThemeData(
+            color: Colors.black,
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                margin: const EdgeInsets.all(20),
-              ),
+              Image.asset('assets/logo/auth_logo.png'),
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
@@ -44,15 +49,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 totalRepeatCount: 6,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 32,
-                  horizontal: 16,
+                padding: const EdgeInsets.only(
+                  top: 16,
+                  left: 16,
+                  right: 32,
+                  bottom: 16,
                 ),
                 child: Column(
                   children: [
                     TextFormField(
                       controller: _emailController,
                       decoration: const InputDecoration(
+                        icon: Icon(Icons.email),
                         hintText: 'Enter Your Email',
                         border: OutlineInputBorder(),
                       ),
@@ -61,32 +69,42 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       height: 10,
                       width: 10,
                     ),
-                    ElevatedButton(
-                        child: const Text('Reset Link'),
-                        onPressed: () async {
-                          final result = await _firebaseController
-                              .forgotPassword(_emailController.text);
-                          if (result == 'Successful') {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(result),
-                                duration: const Duration(seconds: 2),
-                              ),
-                            );
-                            Navigator.pushNamed(context, MyRoutes.loginScreen);
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(result),
-                              ),
-                            );
-                          }
-                        }),
-                    ElevatedButton(
-                        child: const Text('LogIn'),
-                        onPressed: () {
-                          Navigator.pushNamed(context, MyRoutes.loginScreen);
-                        }),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.1,
+                        ),
+                        ElevatedButton(
+                          onPressed: () async {
+                            final result = await _firebaseController
+                                .forgotPassword(_emailController.text);
+                            if (result == 'Successful') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(result),
+                                  duration: const Duration(seconds: 2),
+                                ),
+                              );
+                              Navigator.popAndPushNamed(
+                                  context, MyRoutes.loginScreen);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(result),
+                                ),
+                              );
+                            }
+                          },
+                          style: ButtonStyle(
+                            fixedSize: MaterialStateProperty.all(
+                              Size(
+                                  MediaQuery.of(context).size.width * 0.77, 40),
+                            ),
+                          ),
+                          child: const Text('Reset Link'),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
