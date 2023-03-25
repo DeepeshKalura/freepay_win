@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'work/request/request_service.dart';
 
-class HomeDashBoardScreen extends StatefulWidget {
-  const HomeDashBoardScreen({super.key});
+class HomeDashBoardNaviagtorScreen extends StatefulWidget {
+  const HomeDashBoardNaviagtorScreen({super.key});
 
   @override
-  State<HomeDashBoardScreen> createState() => _HomeDashBoardScreenState();
+  State<HomeDashBoardNaviagtorScreen> createState() =>
+      _HomeDashBoardNaviagtorScreenState();
 }
 
-class _HomeDashBoardScreenState extends State<HomeDashBoardScreen> {
+class _HomeDashBoardNaviagtorScreenState
+    extends State<HomeDashBoardNaviagtorScreen> {
   int _selectedIndex = 2;
   static final List<Widget> _widgetOptions = <Widget>[
     const RequestServicePageWidget(),

@@ -1,7 +1,11 @@
 class MyRoutes {
-  static String uploadScreen = '/uploadScreen';
-  static String loginScreen = '/logiscreen';
+  static String loginScreen = '/loginScreen';
   static String forgotPassword = '/forgotPassword';
-  static String signUp = '/signUp';
+  static String signUpScreen = '/signUpScreen';
   static String checker = '/';
+  static String homeScreen = '/homeScreen';
+  static String profileScreen = '/profileScreen';
+  static String createprojectScreen = '/createprojectScreen';
+  static String requestProjectScreen = '/requestProjectScreen';
+  static String dashboardScreen = '/dashboardScreen';
 }

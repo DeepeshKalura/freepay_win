@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:freepay/view/screen/homedashboard.dart';
 
 import 'controller/firebase_controller.dart';
+import 'controller/rotues.dart';
 import 'firebase_options.dart';
+import 'view/screen/auth/forget_password_screen.dart';
 import 'view/screen/auth/login_screen.dart';
-import 'view/screen/work/create/create_project_screen.dart';
+import 'view/screen/auth/sign_up_screen.dart';
+import 'view/screen/homedashboard.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,20 +23,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData.dark(),
-      home: const HomeDashBoardScreen(),
-      debugShowCheckedModeBanner: false,
-      //initialRoute: '/',
-      // routes: {
-      //   MyRoutes.uploadScreen: (context) => const UploadScreen(),
-      //   MyRoutes.loginScreen: (context) => const LoginScreen(),
-      //   MyRoutes.signUp: (context) => const SignUp(),
-      //   MyRoutes.forgotPassword: (context) => const ForgotPassword(),
-      //   MyRoutes.checker: (context) => Checker(),
-
-      // });
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData.dark(),
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          MyRoutes.loginScreen: (context) => const LoginScreen(),
+          MyRoutes.signUpScreen: (context) => const SignUp(),
+          MyRoutes.forgotPassword: (context) => const ForgotPassword(),
+          MyRoutes.checker: (context) => Checker(),
+          MyRoutes.homeScreen: (context) =>
+              const HomeDashBoardNaviagtorScreen(),
+        });
   }
 }
 
@@ -47,10 +47,30 @@ class Checker extends StatelessWidget {
     return StreamBuilder(
       stream: _firbaseController.auth.authStateChanges(),
       builder: (context, snapShot) {
-        if (snapShot.hasData) {
-          return const CreateProjectPageScreen();
-        } else {
-          return const LoginScreen();
+        switch (snapShot.connectionState) {
+          case ConnectionState.waiting:
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          case ConnectionState.none:
+            return const Scaffold(
+              body: Center(
+                child: Text('No Internet Connection'),
+              ),
+            );
+          case ConnectionState.active:
+            if (snapShot.hasData) {
+              return const HomeDashBoardNaviagtorScreen();
+            } else {
+              return const LoginScreen();
+            }
+
+          case ConnectionState.done:
+            return const Scaffold(
+              body: Center(
+                child: Text('Done'),
+              ),
+            );
         }
       },
     );
