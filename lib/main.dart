@@ -7,7 +7,7 @@ import 'firebase_options.dart';
 import 'view/screen/auth/forget_password_screen.dart';
 import 'view/screen/auth/login_screen.dart';
 import 'view/screen/auth/sign_up_screen.dart';
-import 'view/screen/homedashboard.dart';
+import 'view/homedashboard.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
