@@ -42,6 +42,7 @@ dependencies:
   fluttertoast: ^8.2.1
   font_awesome_flutter: ^10.4.0
   google_fonts: ^4.0.3
+  http: ^0.13.5
   image_picker: ^0.8.7
   page_transition: ^2.0.9
   provider: ^6.0.5
