@@ -12,9 +12,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final FirbaseController _firbaseController = FirbaseController();
+  final FirebaseController _firbaseController = FirebaseController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  var isLoading = false;
+
   @override
   void dispose() {
     super.dispose();
@@ -24,157 +27,170 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Form(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  margin: const EdgeInsets.all(10),
-                ),
-                Image.asset("assets/logo/auth_logo.png"),
-                AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText(
-                      'FreePay!',
-                      textStyle: const TextStyle(
-                        color: Colors.purple,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      speed: const Duration(
-                        milliseconds: 450,
-                      ),
-                    ),
-                  ],
-                  isRepeatingAnimation: true,
-                  totalRepeatCount: 6,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: 32,
-                  ),
+    return isLoading == true
+        ? const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
+        : Scaffold(
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Form(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                            icon: Icon(Icons.email),
-                            hintText: 'Enter Your Email',
-                            border: OutlineInputBorder(),
-                          ),
-                          onChanged: (value) {
-                            setState(() {});
-                          },
-                        ),
+                        margin: const EdgeInsets.all(10),
                       ),
-                      TextFormField(
-                        controller: _passwordController,
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          icon: Icon(Icons.lock),
-                          hintText: 'Enter Your Password',
-                          border: OutlineInputBorder(),
-                        ),
-                        onChanged: (value) {
-                          setState(() {});
-                        },
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.1,
+                      Image.asset("assets/logo/auth_logo.png"),
+                      AnimatedTextKit(
+                        animatedTexts: [
+                          TypewriterAnimatedText(
+                            'FreePay!',
+                            textStyle: const TextStyle(
+                              color: Colors.purple,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w500,
                             ),
-                            ElevatedButton(
-                              onPressed: () async {
-                                var result = await _firbaseController
-                                    .signUpWithEmailAndPassword(
-                                  _emailController.text,
-                                  _passwordController.text,
-                                );
-                                if (result != 'Successful') {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(result),
-                                    ),
-                                  );
-                                }
-                              },
-                              style: ButtonStyle(
-                                fixedSize: MaterialStateProperty.all(
-                                  Size(MediaQuery.of(context).size.width * 0.74,
-                                      40),
-                                ),
-                              ),
-                              child: const Text('Login'),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 2,
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.55,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  MyRoutes.forgotPassword,
-                                );
-                              },
-                              child: const Text(
-                                'Forgot Password?',
-                                style: TextStyle(
-                                  color: Colors.purple,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            'Don\'t have an account?',
-                          ),
-                          TextButton(
-                            onPressed: (() {
-                              Navigator.pushNamed(
-                                  context, MyRoutes.signUpScreen);
-                            }),
-                            child: const Text(
-                              'Sign Up',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            speed: const Duration(
+                              milliseconds: 450,
                             ),
                           ),
                         ],
+                        isRepeatingAnimation: true,
+                        totalRepeatCount: 6,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 16,
+                          horizontal: 32,
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              child: TextFormField(
+                                controller: _emailController,
+                                decoration: const InputDecoration(
+                                  icon: Icon(Icons.email),
+                                  hintText: 'Enter Your Email',
+                                  border: OutlineInputBorder(),
+                                ),
+                                onChanged: (value) {
+                                  setState(() {});
+                                },
+                              ),
+                            ),
+                            TextFormField(
+                              controller: _passwordController,
+                              obscureText: true,
+                              decoration: const InputDecoration(
+                                icon: Icon(Icons.lock),
+                                hintText: 'Enter Your Password',
+                                border: OutlineInputBorder(),
+                              ),
+                              onChanged: (value) {
+                                setState(() {});
+                              },
+                            ),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.1,
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      var result = await _firbaseController
+                                          .logInFunction(
+                                        _emailController.text,
+                                        _passwordController.text,
+                                      );
+
+                                      if (result != 'Successful') {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(result),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    style: ButtonStyle(
+                                      fixedSize: MaterialStateProperty.all(
+                                        Size(
+                                            MediaQuery.of(context).size.width *
+                                                0.74,
+                                            40),
+                                      ),
+                                    ),
+                                    child: const Text('Login'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 2,
+                            ),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.55,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        MyRoutes.forgotPassword,
+                                      );
+                                    },
+                                    child: const Text(
+                                      'Forgot Password?',
+                                      style: TextStyle(
+                                        color: Colors.purple,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'Don\'t have an account?',
+                                ),
+                                TextButton(
+                                  onPressed: (() {
+                                    Navigator.pushNamed(
+                                        context, MyRoutes.signUpScreen);
+                                  }),
+                                  child: const Text(
+                                    'Sign Up',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
   }
 }

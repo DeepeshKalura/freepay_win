@@ -14,7 +14,7 @@ class RequestServicePageWidget extends StatefulWidget {
 
 class RequestServicePageWidgetState extends State<RequestServicePageWidget> {
   TextEditingController? textController;
-  final FirbaseController _firebaseController = FirbaseController();
+  final FirebaseController _firebaseController = FirebaseController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

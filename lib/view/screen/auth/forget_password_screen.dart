@@ -13,7 +13,7 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController _emailController = TextEditingController();
-  final FirbaseController _firebaseController = FirbaseController();
+  final FirebaseController _firebaseController = FirebaseController();
   @override
   void dispose() {
     super.dispose();

@@ -29,6 +29,13 @@
             {
               "client_id": "914380146036-5rmnu8ooo501oaj1e69ramed0pal5hqo.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "914380146036-d6teqq1df9gl7qgam93870dpropr54k5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.deepeshkalura.freepay"
+              }
             }
           ]
         }

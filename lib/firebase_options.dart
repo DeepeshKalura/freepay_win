@@ -44,39 +44,42 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAAOcZakbZsRIGo_1R7VmrKsKI8FuyAd2s',
-    appId: '1:290388502384:web:8b9f02bf18cd9250f5d1b5',
-    messagingSenderId: '290388502384',
-    projectId: 'uploadscreen-e732c',
-    authDomain: 'uploadscreen-e732c.firebaseapp.com',
-    storageBucket: 'uploadscreen-e732c.appspot.com',
+    apiKey: 'AIzaSyDAzjOOi3oF82vsB1vvX79JoJrl6d-yrj4',
+    appId: '1:914380146036:web:ebb42fd7760de4eb55d821',
+    messagingSenderId: '914380146036',
+    projectId: 'freepay-394fb',
+    authDomain: 'freepay-394fb.firebaseapp.com',
+    storageBucket: 'freepay-394fb.appspot.com',
+    measurementId: 'G-Z21XZGM00N',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBL7gTmIDmZm5NRMyJhwhySDiU5SLi8j0c',
-    appId: '1:290388502384:android:0cfddb20e1eb6608f5d1b5',
-    messagingSenderId: '290388502384',
-    projectId: 'uploadscreen-e732c',
-    storageBucket: 'uploadscreen-e732c.appspot.com',
+    apiKey: 'AIzaSyCjpAtq_kiacR-WnqNPS59TDoXZcKlh3Rw',
+    appId: '1:914380146036:android:41fca05f718ab73055d821',
+    messagingSenderId: '914380146036',
+    projectId: 'freepay-394fb',
+    storageBucket: 'freepay-394fb.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCNpyRyHhr7hfbRlOQZmfzVSpeVipqIJGs',
-    appId: '1:290388502384:ios:30069fb10d22935bf5d1b5',
-    messagingSenderId: '290388502384',
-    projectId: 'uploadscreen-e732c',
-    storageBucket: 'uploadscreen-e732c.appspot.com',
-    iosClientId: '290388502384-s6iiab0nsghol1d36b2f2ptdc3h6g6q2.apps.googleusercontent.com',
-    iosBundleId: 'com.deepeshkalura.uploadImage',
+    apiKey: 'AIzaSyCy4H_ISpHRa7mkbxLdJuipuwcb83WiQTY',
+    appId: '1:914380146036:ios:9ca5ffb5d4c0b4d155d821',
+    messagingSenderId: '914380146036',
+    projectId: 'freepay-394fb',
+    storageBucket: 'freepay-394fb.appspot.com',
+    iosClientId:
+        '914380146036-d6teqq1df9gl7qgam93870dpropr54k5.apps.googleusercontent.com',
+    iosBundleId: 'com.deepeshkalura.freepay',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCNpyRyHhr7hfbRlOQZmfzVSpeVipqIJGs',
-    appId: '1:290388502384:ios:30069fb10d22935bf5d1b5',
-    messagingSenderId: '290388502384',
-    projectId: 'uploadscreen-e732c',
-    storageBucket: 'uploadscreen-e732c.appspot.com',
-    iosClientId: '290388502384-s6iiab0nsghol1d36b2f2ptdc3h6g6q2.apps.googleusercontent.com',
-    iosBundleId: 'com.deepeshkalura.uploadImage',
+    apiKey: 'AIzaSyCy4H_ISpHRa7mkbxLdJuipuwcb83WiQTY',
+    appId: '1:914380146036:ios:9ca5ffb5d4c0b4d155d821',
+    messagingSenderId: '914380146036',
+    projectId: 'freepay-394fb',
+    storageBucket: 'freepay-394fb.appspot.com',
+    iosClientId:
+        '914380146036-d6teqq1df9gl7qgam93870dpropr54k5.apps.googleusercontent.com',
+    iosBundleId: 'com.deepeshkalura.freepay',
   );
 }

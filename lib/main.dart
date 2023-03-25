@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'FreeBay',
         theme: ThemeData(
           primarySwatch: Colors.purple,
         ),
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
 
 class Checker extends StatelessWidget {
   Checker({super.key});
-  final FirbaseController _firbaseController = FirbaseController();
+  final FirebaseController _firbaseController = FirebaseController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +51,10 @@ class Checker extends StatelessWidget {
       builder: (context, snapShot) {
         switch (snapShot.connectionState) {
           case ConnectionState.waiting:
-            return const Center(
-              child: CircularProgressIndicator(),
+            return const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
             );
           case ConnectionState.none:
             return const Scaffold(
