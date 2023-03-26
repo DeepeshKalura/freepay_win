@@ -245,7 +245,9 @@ class TransitionCard extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundColor: Colors.grey[300],
-              child: Image.network(imageUrl),
+              backgroundImage: NetworkImage(
+                (imageUrl),
+              ),
             ),
             const SizedBox(width: 16),
             Expanded(

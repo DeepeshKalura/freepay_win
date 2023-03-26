@@ -456,6 +456,8 @@ class CreateProjectPageScreenState extends State<CreateProjectPageScreen> {
                                               imagetextController.clear();
                                               nametextController.clear();
                                               ammounttextController.clear();
+                                              isLoading = false;
+                                              setState(() {});
                                             },
                                             text: 'Publish Project',
                                             options: FFButtonOptions(
