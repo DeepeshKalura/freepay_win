@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../work/request/request_service.dart';
+import '../work/create/create_project_screen.dart';
 import 'board/dash_board.dart';
 import 'board/feed_board.dart';
 import 'board/profile_board.dart';
@@ -18,7 +18,7 @@ class _HomeDashBoardNaviagtorScreenState
     extends State<HomeDashBoardNaviagtorScreen> {
   int _selectedIndex = 2;
   static final List<Widget> _widgetOptions = <Widget>[
-    const RequestServicePageWidget(),
+    const CreateProjectPageScreen(),
     const SearchWidget(),
     const Dashboard(),
     FeedsBoard(),
